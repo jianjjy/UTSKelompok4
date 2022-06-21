@@ -128,12 +128,10 @@ public class KHS {
         double totalSks = 0.0;
         double totalGradePoint=0.0;
 
-        for (Term term2 : terms) {
-            for (KHSDetail khsDetail2 : khsdetail) {
-                if ((khsDetail2.getStudentID().equals(StudentID)) && (term2.getKodeTerm().equals(kodeTerm)) ) {
-                    totalGradePoint += khsDetail2.getGradePoint(khsDetail2.getWeightKHS(khsDetail2.getNilai()), khsDetail2.getMatkul());
-                    totalSks += khsDetail2.getMatkul().getSks();
-                }
+        for (KHSDetail khsDetail2 : khsdetail) {
+            if ((khsDetail2.getStudentID().equals(StudentID)) && (khsDetail2.getMatkul().getKodeTerm().equals(kodeTerm))) {
+                totalGradePoint += khsDetail2.getGradePoint(khsDetail2.getWeightKHS(khsDetail2.getNilai()), khsDetail2.getMatkul());
+                totalSks += khsDetail2.getMatkul().getSks();
             }
         }
         double ipk = totalGradePoint/totalSks;
